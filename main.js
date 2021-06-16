@@ -44,3 +44,55 @@ function insertSquare() {
 function randomVal(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
+//Inheritance Pracice:
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    greet() {
+        alert(`Greetings! I am ${this.name}.`);
+    }
+    sleep() {
+        alert(`I am going to sleep now. My name is ${this.name}.`);
+    }
+}
+
+//new Class extends 'name of parent class'
+class Teacher extends Person {
+    constructor(name, age, dept) {
+        //use super to call the parent constructor. 
+        //keyword super will connect to whatever is to the right of 'extends'. In this example, Person.
+        super(name, age);
+
+        //then set your own properties that are unique to the child class. In this example, Teacher.
+        this.dept = dept;
+    }
+    //This will overwrite the function inherited from the parent class:
+    greet() {
+        alert(`Greetings! I am ${this.name}. I work in the ${this.dept} department.`);
+    }
+}
+
+class Student extends Person {
+    constructor(name, age, major) {
+        super(name, age);
+        this.major = major;
+    }
+    greet() {
+        alert(`Greetings! I am ${this.name}. I am majoring in ${this.major}.`);
+    }
+}
+
+let p1 = new Person ('Darius Rucker', 55);
+let t1 = new Teacher('Cindy Childers', 58, 'Art');
+let s1 = new Student('Ellie Banks', 28, 'Web Development');
+
+p1.greet();
+t1.greet();
+s1.greet();
+
+p1.sleep();
+t1.sleep();
+s1.sleep();
